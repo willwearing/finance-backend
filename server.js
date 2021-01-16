@@ -1,12 +1,12 @@
 require("colors");
 const express = require("express");
 const helmet = require("helmet");
-//const ProjectsRouter = require("./routers/projects-router"); - this will need to change
+const usersRouter = require("./router/users-router");
 
 const server = express();
 
 server.use(helmet());
 server.use(express.json());
-//server.use("/projects", ProjectsRouter); - this will need to change
+server.use("/", usersRouter);
 
 module.exports = server;
