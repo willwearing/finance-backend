@@ -6,7 +6,7 @@ exports.seed = function (knex) {
     },
     {
       user_name: "will",
-      user_email: "will@mail.com",
+      user_email: "willwearing@gmail.com",
     },
     {
       user_name: "mike",
