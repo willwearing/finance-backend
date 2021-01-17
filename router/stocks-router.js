@@ -1,7 +1,7 @@
 const express = require("express");
 const Stocks = require("./stocks-model");
 const router = express.Router();
-
+//get all stocks
 router.get("/", (req, res) => {
   Stocks.getStocks(req.params.id)
     .then((stocks) => {
@@ -31,6 +31,7 @@ router.get("/stock/:id", (req, res) => {
       res.status(500).json({ message: "Failed to get stock" });
     });
 });
+//add new stock
 router.post("/", (req, res) => {
   Stocks.addStock(req.body)
     .then((stock) => {
@@ -40,4 +41,5 @@ router.post("/", (req, res) => {
       res.status(500).json({ message: "Failed to add stock" });
     });
 });
+
 module.exports = router;
