@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     });
 });
 //get user by email
-router.get("/:user_email/users", (req, res) => {
+router.get("/users/:user_email", (req, res) => {
   Users.getUserByEmail(req.params.user_email)
     .then((user) => {
       res.status(200).json(user);
