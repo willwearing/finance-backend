@@ -1,18 +1,14 @@
 # finance-backend<br>
-Test - sending user_id or email to back end
-Store last 10 stocks to that user
-User logout 
-User log back in
-Data persist and displays
+To do:
+Build ListStockCards component to display stock ticker search history
+Add marketing pages
+Add Nav bar - https://github.com/willwearing/react-nav-bar
+Style whole site
 
-Questions?
-What’s easier to send and recognize users with? user_id or email?
-Do I need to set an async await on the user data before sending to the backend?
-If I use user_id, does is stay the same and therefore can be used to authorize or do I need to use email for that? 
-Is it easier to match email address from frontend with backend and if matching, allow them to see the data? 
+Research:
+Stock purchase API - can this be done from auth0 user data or do I need to just redirect them to another site 
 
-First:
-On login, send email address to backend
-If email address matches any in backend, send back data, if not, nothing
+Future:
+Portfolio component - tracks current value, shows gains and losses of personal portfolio 
 
 
