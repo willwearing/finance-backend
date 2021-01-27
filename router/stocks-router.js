@@ -1,4 +1,6 @@
+const { json } = require("express");
 const express = require("express");
+const { runInContext } = require("vm");
 const Stocks = require("./stocks-model");
 const router = express.Router();
 //get all stocks
@@ -19,6 +21,26 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ message: "Failed to get users stocks" });
+    });
+});
+//get stocks by user email
+router.get("/email/:user_email", (req, res) => {
+  Stocks.getStocksByUserEmail(req.params.user_email)
+    .then((stock) => {
+      res.status(200).json(stock);
+    })
+    .catch((err) => {
+      res.status(500).json({ err, message: "Failed to get users stocks" });
+    });
+});
+//testing getIdByEmail
+router.get("/email/email2/:user_email", (req, res) => {
+  Stocks.getIdByEmail(req.params.user_email)
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.status(500).json({ err, message: "failed test" });
     });
 });
 //get stock by id

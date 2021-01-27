@@ -11,9 +11,9 @@ router.get("/", (req, res) => {
       res.status(500).json({ message: "Failed to get users" });
     });
 });
-//get user by id
-router.get("/:id/users", (req, res) => {
-  Users.getUserById(req.params.id)
+//get user by email
+router.get("/:user_email/users", (req, res) => {
+  Users.getUserByEmail(req.params.user_email)
     .then((user) => {
       res.status(200).json(user);
     })
