@@ -11,14 +11,28 @@ router.get("/", (req, res) => {
       res.status(500).json({ message: "Failed to get users" });
     });
 });
-//get user by email
-router.get("/users/:user_email", (req, res) => {
-  Users.getUserByEmail(req.params.user_email)
+//get user by id
+router.get("/users/id/:id", (req, res) => {
+  Users.getUserById(req.params.id)
     .then((user) => {
       res.status(200).json(user);
     })
     .catch((err) => {
-      res.status(500).json({ message: "Failed to get user" });
+      res.status(500).json({ message: "Failed to get user by email" });
+    });
+});
+//get user by email
+router.get("/users/:user_email", (req, res) => {
+  Users.getUserByEmail(req.params.user_email)
+    .then((user) => {
+      if (user.length === 0) {
+        res.status(404).json({ message: "User not in database" });
+      } else {
+        res.status(200).json({ user });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Failed to get user by email" });
     });
 });
 //add new user
