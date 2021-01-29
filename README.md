@@ -6,6 +6,8 @@ Add marketing pages
 Add Nav bar - https://github.com/willwearing/react-nav-bar
 Style whole site
 Potential way to get buy/sell in app: https://docs.gemini.com/rest-api/#introduction
+Robinhood API - https://algotrading101.com/learn/robinhood-api-guide/
+
 
 Research:
 Stock purchase API - can this be done from auth0 user data or do I need to just redirect them to another site 
