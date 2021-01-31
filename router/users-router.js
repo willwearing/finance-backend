@@ -2,7 +2,7 @@ const express = require("express");
 const Users = require("./users-model");
 const router = express.Router();
 //get all users
-router.get("/", (req, res) => {
+router.get("/users", (req, res) => {
   Users.getUsers(req.params.id)
     .then((user) => {
       res.status(200).json(user);
@@ -26,7 +26,7 @@ router.get("/users/:user_email", (req, res) => {
   Users.getUserByEmail(req.params.user_email)
     .then((user) => {
       if (user.length === 0) {
-        res.status(404).json({ message: "User not in database" });
+        res.status(404).json({ message: "no user" });
       } else {
         res.status(200).json(user[0]);
       }
@@ -43,6 +43,21 @@ router.post("/users", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ message: "Failed to add user" });
+    });
+});
+//delete user
+router.delete("/users/del/:id", (req, res) => {
+  const id = req.params.id;
+  Users.removeUser(id)
+    .then((del) => {
+      if (del) {
+        res.status(200).json(del);
+      } else {
+        res.status(404).json({ message: "User id not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ status: 500, err });
     });
 });
 module.exports = router;
