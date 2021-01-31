@@ -28,7 +28,7 @@ router.get("/users/:user_email", (req, res) => {
       if (user.length === 0) {
         res.status(404).json({ message: "User not in database" });
       } else {
-        res.status(200).json({ user });
+        res.status(200).json(user[0]);
       }
     })
     .catch((err) => {
