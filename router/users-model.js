@@ -15,4 +15,10 @@ module.exports = {
   getUserByEmail(user_email) {
     return db("users").where({ user_email });
   },
+  removeUser(id) {
+    return db("users")
+      .where({ id })
+      .del()
+      .then(() => this.getUsers());
+  },
 };
