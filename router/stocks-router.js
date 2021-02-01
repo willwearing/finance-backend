@@ -37,7 +37,7 @@ router.get("/email/:user_email", (req, res) => {
 router.get("/email/email2/:user_email", (req, res) => {
   Stocks.getIdByEmail(req.params.user_email)
     .then((user) => {
-      res.status(200).json(user);
+      res.status(200).json(user[0]);
     })
     .catch((err) => {
       res.status(500).json({ err, message: "failed test" });

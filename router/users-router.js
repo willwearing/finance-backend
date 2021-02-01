@@ -45,8 +45,8 @@ router.post("/users", (req, res) => {
       res.status(500).json({ message: "Failed to add user" });
     });
 });
-//delete user
-router.delete("/users/del/:id", (req, res) => {
+//delete user by id
+router.delete("/users/delid/:id", (req, res) => {
   const id = req.params.id;
   Users.removeUser(id)
     .then((del) => {
@@ -60,4 +60,15 @@ router.delete("/users/del/:id", (req, res) => {
       res.status(500).json({ status: 500, err });
     });
 });
+//delete by user email
+router.delete("/users/del/:user_email", (req, res) => {
+  Users.removeUserByEmail(req.params.user_email)
+    .then((del) => {
+      res.status(200).json(del);
+    })
+    .catch((err) => {
+      res.status(500).json({ err, message: "failed test" });
+    });
+});
+
 module.exports = router;
