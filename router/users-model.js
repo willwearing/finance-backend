@@ -13,14 +13,12 @@ module.exports = {
     return db("users").where({ id }).first();
   },
   getIdByEmail(user_email) {
-    console.log("getIdByEmail", user_email);
     return db("users").select("id").where({ user_email }).first();
   },
   getUserByEmail(user_email) {
     return db("users").where({ user_email });
   },
   removeUser(id) {
-    console.log("remove user", id);
     return db("users")
       .where({ id })
       .del()

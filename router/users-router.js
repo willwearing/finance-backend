@@ -45,7 +45,7 @@ router.post("/users", (req, res) => {
       res.status(500).json({ message: "Failed to add user" });
     });
 });
-//delete user
+//delete user by id
 router.delete("/users/delid/:id", (req, res) => {
   const id = req.params.id;
   Users.removeUser(id)
@@ -60,19 +60,7 @@ router.delete("/users/delid/:id", (req, res) => {
       res.status(500).json({ status: 500, err });
     });
 });
-
-//***WORKS*** testing get id by email - should return id - works
-router.get("/users/del/getidbyemail/:user_email", (req, res) => {
-  Users.getIdByEmail(req.params.user_email)
-    .then((user) => {
-      res.status(200).json(user[0]);
-    })
-    .catch((err) => {
-      res.status(500).json({ err, message: "failed test" });
-    });
-});
-
-//delete by sending email
+//delete by user email
 router.delete("/users/del/:user_email", (req, res) => {
   Users.removeUserByEmail(req.params.user_email)
     .then((del) => {
